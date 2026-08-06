@@ -42,7 +42,7 @@ Provides distance measurement, motor rotation scanning, and live spatial visuali
 
 <div align="center">
 
-<img src="./activity.svg" width="620" alt="Faheem Ali's Contribution Graph"/>
+<img src="./activity.svg" width="620" alt="Contribution Graph"/>
 
 <img src="./langs.svg" width="620" alt="Top languages by bytes and by repo"/>
 

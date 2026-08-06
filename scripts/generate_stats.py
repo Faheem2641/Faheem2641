@@ -504,7 +504,7 @@ def draw_activity_graph(s):
     p.append(f'<rect width="{W}" height="{H}" rx="8" class="bg-card"/>')
 
     p.append(f'<g opacity="0">{fade(0.10)}'
-             + label(W / 2, 32, "Faheem Ali&apos;s Contribution Graph", 13, "title-t", "middle")
+             + label(W / 2, 32, "Contribution Graph", 13, "title-t", "middle")
              + '</g>')
 
     y_ticks = 4
