@@ -485,12 +485,12 @@ def draw_activity_graph(s):
         ".grid-l{stroke:#21262d;stroke-dasharray:3 3;stroke-width:1}"
         ".title-t{fill:#f0f6fc;font-weight:600}"
         ".line-p{stroke:#58a6ff;stroke-width:2.8;fill:none;stroke-linecap:round;stroke-linejoin:round}"
-        ".dot-p{fill:#58a6ff;stroke:#0d1117;stroke-width:1.8;transition:all 0.2s ease}"
+        ".dot-p{fill:#58a6ff;stroke:#0d1117;stroke-width:1.8;transition:all 0.25s cubic-bezier(0.4, 0, 0.2, 1)}"
         ".point-group{cursor:pointer}"
-        ".point-group:hover .dot-p{r:5.5;fill:#ffffff;stroke:#58a6ff;stroke-width:2.2}"
-        ".point-group:hover .tip{opacity:1}"
-        ".tip{pointer-events:none;opacity:0;transition:opacity 0.2s ease}"
-        ".tip-bg{fill:#161b22;stroke:#58a6ff;stroke-width:1;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.5))}"
+        ".point-group:hover .dot-p{r:6;fill:#ffffff;stroke:#58a6ff;stroke-width:2.5;filter:drop-shadow(0 0 6px #58a6ff)}"
+        ".point-group:hover .tip{opacity:1;transform:translateY(-2px)}"
+        ".tip{pointer-events:none;opacity:0;transition:opacity 0.2s ease, transform 0.2s ease}"
+        ".tip-bg{fill:#161b22;stroke:#58a6ff;stroke-width:1;filter:drop-shadow(0 3px 8px rgba(0,0,0,0.6))}"
         ".tip-txt{fill:#58a6ff;font-size:9.5px;font-weight:600}"
         "</style>"
         "<defs>"
@@ -545,11 +545,10 @@ def draw_activity_graph(s):
     p.append('</g>')
     p.append(cursor)
 
-    # Interactive points with tooltips
+    # Interactive points with tooltips and transparent hit target circles
     for cx, cy, d in pts:
         cnt = d.get("contributionCount", 0)
         dt_str = d.get("date", "")
-        # Format date string e.g. "Aug 24"
         if len(dt_str) >= 10:
             m_num = int(dt_str[5:7])
             m_str = MON[m_num - 1]
@@ -558,18 +557,18 @@ def draw_activity_graph(s):
         else:
             tip_label = f"{cnt} contribs"
 
-        tip_w = len(tip_label) * 6.2 + 16
-        tip_x = max(plot_x0 + 4, min(cx - tip_w / 2, W - tip_w - 10))
-        tip_y = max(plot_y0 - 15, cy - 28)
+        tip_w = len(tip_label) * 6.2 + 14
+        tip_x = max(min(cx - tip_w / 2, W - tip_w - 10), 10)
+        tip_y = cy - 28 if cy - 28 > 10 else cy + 12
 
-        p.append(
-            f'<g class="point-group">'
-            f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="3.2" class="dot-p"/>'
-            f'<g class="tip">'
-            f'<rect x="{tip_x:.1f}" y="{tip_y:.1f}" width="{tip_w:.1f}" height="20" rx="4" class="tip-bg"/>'
-            f'<text x="{tip_x + tip_w / 2:.1f}" y="{tip_y + 13.5:.1f}" text-anchor="middle" class="tip-txt">{tip_label}</text>'
-            f'</g></g>'
-        )
+        p.append(f'<g class="point-group">'
+                 f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="14" fill="transparent"/>'
+                 f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="3.8" class="dot-p"/>'
+                 f'<g class="tip">'
+                 f'<rect x="{tip_x:.1f}" y="{tip_y:.1f}" width="{tip_w:.1f}" height="18" rx="4" class="tip-bg"/>'
+                 f'<text x="{tip_x + tip_w / 2:.1f}" y="{tip_y + 12.5:.1f}" class="tip-txt" text-anchor="middle">{tip_label}</text>'
+                 f'</g>'
+                 f'</g>')
 
     p.append("</svg>")
     return "".join(p)
