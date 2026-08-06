@@ -58,7 +58,7 @@ query($login: String!, $from: DateTime!, $to: DateTime!) {
 # The portrait's ink is the data ink, so every graphic reads as one material.
 LIGHT = dict(data="#6e7681", emph="#424a53", dim="#8c959f",
              rule="#d8dee4", surface="#ffffff")
-DARK = dict(data="#58a6ff", emph="#ffffff", dim="#8b949e",
+DARK = dict(data="#c9d1d9", emph="#f0f6fc", dim="#8b949e",
             rule="#30363d", surface="#0d1117")
 # JBMono is the inlined subset below; the rest is a fallback for the unlikely
 # case a renderer ignores the embedded face.
@@ -483,7 +483,7 @@ def draw_activity_graph(s):
         "<style>"
         ".bg-card{fill:#0d1117;stroke:#30363d;stroke-width:1}"
         ".grid-l{stroke:#21262d;stroke-dasharray:3 3;stroke-width:1}"
-        ".title-t{fill:#58a6ff;font-weight:600}"
+        ".title-t{fill:#f0f6fc;font-weight:600}"
         ".line-p{stroke:#58a6ff;stroke-width:2.8;fill:none;stroke-linecap:round;stroke-linejoin:round}"
         ".dot-p{fill:#58a6ff;stroke:#0d1117;stroke-width:1.8;transition:all 0.2s ease}"
         ".point-group{cursor:pointer}"

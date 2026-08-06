@@ -18,8 +18,8 @@ from PIL import Image
 RAMP = " .`:-=+*cs#%@"
 COLS = 85
 ROW_RATIO = 0.48
-FG_LIGHT = "#58a6ff"
-FG_DARK = "#f0f6fc"
+FG_LIGHT = "#6e7681"
+FG_DARK = "#c9d1d9"
 CHAR_W = 7.74
 FONT_SIZE = 12.9
 LINE_H = 15
