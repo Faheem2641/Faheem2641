@@ -4,9 +4,7 @@
 
 <img src="./stats.svg" width="620" alt="Contributions in the last year"/>
 
-[github](https://github.com/Faheem2641) &nbsp;·&nbsp;
-[linkedin](https://www.linkedin.com/in/faheem-ali-b87293373/) &nbsp;·&nbsp;
-[portfolio](https://github.com/Faheem2641)
+[linkedin](https://www.linkedin.com/in/faheem-ali-b87293373/)
 
 </div>
 
